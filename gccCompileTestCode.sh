@@ -1,4 +1,12 @@
 #!/bin/bash
+#
+# Compile all the code to test
+#
+# Last update: 08/10/2022
+#
+set -eE
+trap 'echo -e "\\n\\n${RED}Error at line $LINENO$NC - Command:\\n$RED$BASH_COMMAND\\n"' ERR
+
 IFSOLD=$IFS
 
 IFS=$(echo -en "\\n\\b") # Change the Internal Field Separator (IFS) to "\\n\\b"
