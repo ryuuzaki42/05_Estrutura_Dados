@@ -2,11 +2,11 @@
 #
 # Compile all the code to test
 #
-# Last update: 09/10/2022
+# Last update: 19/06/2023
 #
 IFSOLD=$IFS
 
-IFS=$(echo -en "\\n\\b") # Change the Internal Field Separator (IFS) to "\\n\\b"
+IFS=$(echo -en "\n\b") # Change the Internal Field Separator (IFS) to "\n\b"
 
 stdVersion="c99" # c89 c99 c11 c17 c18
 
