@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     printf("argc: %d\n", argc);
 
     for(x = 0; x < argc; x++) {
-        printf("argv[%d]: %s\n",x, argv[x]);
+        printf("argv[%d]: %s\n", x, argv[x]);
 
         if(!strcmp(argv[x], "-h"))
             puts("help");
