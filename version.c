@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-/*Detecting the compiler versionr
+/*Detecting the compiler version
     gcc version.c
     gcc -std=c90 version.c
     gcc -std=c99 version.c
