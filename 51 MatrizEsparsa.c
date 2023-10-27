@@ -1,6 +1,6 @@
-#include <stdio.h>
+#include<stdio.h>
 #include<stdlib.h>
-#include <stdlib.h>
+#include<stdlib.h>
 
 #define TAML 4
 #define TAMC 4
@@ -52,14 +52,14 @@ int inserirLinha(matriz_esparsa *matriz, celula *no, int lin, int col, int eleme
         return 1;
     }
 
-    if(col < aux->coluna) {  // O elemento que quero inserir pertence a uma coluna anterior a primeira ja inserida - equivalente a inserir no inicio
+    if(col < aux->coluna) { // O elemento que quero inserir pertence a uma coluna anterior a primeira ja inserida - equivalente a inserir no inicio
         no->proxcol = *lista;
         *lista = no;
         return 1;
     }
 
     while(aux!= NULL && aux->coluna <= col) { // Percorrendo a lista pra achar a posicao(coluna) que deve ser inserido - equivalente a inserir na posicao k
-        if(aux->coluna == col) {  // Caso ja exista um no naquela coordenada
+        if(aux->coluna == col) { // Caso ja exista um no naquela coordenada
             aux->info = elemento; // Simplesmente substitui o info
             return 1;
         }
