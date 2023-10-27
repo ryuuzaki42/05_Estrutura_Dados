@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 #include "0 os.h" // To use clean_output() and clean_stdin()
 
@@ -239,7 +240,7 @@ int main() {
             case 3: // Remover no inicio
                 a = removerNoInicio(&lista);
 
-                if(a.nome) {
+                if(a.idade != -1) {
                     printf("ELEMENTO REMOVIDO: %s\n", a.nome);
                     printf("Tudo certo :)\n");
                 } else
@@ -250,7 +251,7 @@ int main() {
             case 4: // Remover no final
                 a = removerNoFim(&lista);
 
-                if(a.nome) {
+                if(a.idade != -1) {
                     printf("ELEMENTO REMOVIDO: %s\n", a.nome);
                     printf("Tudo certo :)\n");
                 } else
