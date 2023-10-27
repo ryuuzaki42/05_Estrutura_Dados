@@ -1,4 +1,5 @@
 #include<stdlib.h>
+// #include<stdio.h>
 
 // Verifica o Sistema Operacional
 #if defined(_WIN32) || defined(_WIN64)
@@ -13,9 +14,10 @@
 
 // Limpa buffer do teclado para Windows e GNU/Linux
 void clean_stdin() {
-    int c;
+//     int c;
+//     while((c = getchar()) != '\n' && c != EOF);
 
-    while((c = getchar()) != '\n' && c != EOF);
+    setbuf(stdin, NULL);
 }
 
 // Limpa o terminal para Windows e GNU/Linux
