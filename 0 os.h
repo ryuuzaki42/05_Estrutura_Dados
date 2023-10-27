@@ -1,5 +1,4 @@
-#include<stdlib.h>
-// #include<stdio.h>
+// #include<stdlib.h>
 
 // Verifica o Sistema Operacional
 #if defined(_WIN32) || defined(_WIN64)

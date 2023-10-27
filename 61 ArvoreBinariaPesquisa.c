@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdlib.h>
 
 typedef struct sNo {
     int info;

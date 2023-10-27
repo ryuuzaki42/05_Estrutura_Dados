@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 
 #include "0 os.h" // To use clean_output() and clean_stdin()
 

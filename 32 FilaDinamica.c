@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 
 #include "0 os.h" // To use clean_output() and clean_stdin()
@@ -62,13 +63,13 @@ int inserirNaFila(Fila* fila, Aluno inserido) {
 }
 
 Aluno removerNaFila(Fila* fila) {
-    Aluno removido = criarElemento("",-1);
+    Aluno removido = criarElemento("", -1);
 
     if(fila->ini == NULL && fila->fim == NULL)
         return removido;
 
     if(fila->ini == fila->fim) {
-        removido =  criarElemento(fila->fim->info.nome, fila->fim->info.idade);
+        removido = criarElemento(fila->fim->info.nome, fila->fim->info.idade);
         fila->ini = NULL;
         fila->fim = NULL;
         return removido;

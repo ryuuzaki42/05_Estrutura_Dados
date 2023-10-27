@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
 
 #include "0 os.h" // To use clean_output() and clean_stdin()
@@ -100,7 +101,7 @@ Aluno removerNoInicio(Deque *deque) {
     }
 
     deque->inicio = deque->inicio->prox;
-    deque->inicio->ante  = NULL;
+    deque->inicio->ante = NULL;
     free(aux);
     return vazio;
 }
