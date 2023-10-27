@@ -44,7 +44,7 @@ int inserirNoInicio(Lista** lista, Aluno inserido) {
     (*lista)->ant = nova;
     nova->next = (*lista);
     (*lista) = nova;
-    return  1;
+    return 1;
 }
 
 int inserirNoFim(Lista** lista, Aluno novo) {
