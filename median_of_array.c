@@ -37,7 +37,6 @@ int main() {
     double median = findMedianSortedArrays(nums1, nums1Size, nums2, nums2Size);
     printf("Median: %.2f\n", median);
 
-    free(arr); // Free the allocated memory
 
     return 0;
 }
