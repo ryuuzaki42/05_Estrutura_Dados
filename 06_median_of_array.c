@@ -4,6 +4,7 @@
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size) {
     int i = 0, j = 0, k = 0;
     int *arr = (int *)malloc(sizeof(int) * (nums1Size + nums2Size));
+    double result = 0;
 
     while (i < nums1Size && j < nums2Size) {
         if (nums1[i] < nums2[j]) {
@@ -22,21 +23,22 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     }
 
     if (k % 2 == 0) {
-        return (arr[k / 2] + arr[k / 2 - 1]) / 2.0;
+        result = (arr[k / 2] + arr[k / 2 - 1]) / 2.0;
     } else {
-        return (double)arr[k / 2];
+        result = (double)arr[k / 2];
     }
+
+    free(arr);
+    return result;
 }
 
 int main() {
-    int nums1[] = {1, 3};
-    int nums1Size = 2;
-    int nums2[] = {2};
-    int nums2Size = 1;
+    int nums1[] = {2, 3, 5, 8};
+    int nums1Size = 4;
+    int nums2[] = {10, 12, 14, 16, 18, 20};
+    int nums2Size = 6;
 
     double median = findMedianSortedArrays(nums1, nums1Size, nums2, nums2Size);
     printf("Median: %.2f\n", median);
-
-
     return 0;
 }
