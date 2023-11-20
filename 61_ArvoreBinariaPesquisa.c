@@ -1,11 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdlib.h>
 
 typedef struct sNo {
     int info;
-    struct sNo *esq;
-    struct sNo *dir;
+    struct sNo *esq, *dir;
 } No;
 
 void inicializarArvore(No **ptRaiz) {
@@ -17,7 +15,7 @@ void insereComRecursao(No **ptRaiz, int info2) { // Inserção com recursão
         *ptRaiz = (No *)malloc(sizeof(No));
 
         if(*ptRaiz == NULL) {
-            printf("\nErro.Memoria nao alocada");
+            printf("\nErro: Memoria nao alocada");
             return;
         }
 
@@ -112,7 +110,7 @@ No *MenorEsquerda(No **no) {
 }
 
 void remover(No **ptRaiz, int info2) {
-    if(*ptRaiz == NULL) { // Esta verificacao serve para caso o info nao exista na arvore.
+    if(*ptRaiz == NULL) { // Caso o info nao exista na arvore.
         printf("Numero nao existe na arvore!");
         return;
     }
@@ -177,6 +175,7 @@ void visita(No *ptRaiz) {
     printf("%d\n",ptRaiz->info);
 }
 
+// Ordem: E D R // Esquerda, Direita, Raiz
 void exibirEmOrdem(No *ptRaiz) { // Em ordem
     if(ptRaiz != NULL) {
         exibirEmOrdem(ptRaiz->esq);
@@ -185,6 +184,7 @@ void exibirEmOrdem(No *ptRaiz) { // Em ordem
     }
 }
 
+// PreOrdem: R E D
 void exibirPreOrdem(No *ptRaiz) { // Pré-ordem
     if(ptRaiz != NULL) {
         visita(ptRaiz);
@@ -193,6 +193,7 @@ void exibirPreOrdem(No *ptRaiz) { // Pré-ordem
     }
 }
 
+// PosOrdem: E D R
 void exibirPosOrdem(No *ptRaiz) { // Pós-ordem
     if(ptRaiz != NULL) {
         exibirPosOrdem(ptRaiz->esq);
@@ -226,8 +227,10 @@ int maior(int a, int b) {
 }
 
 int alturaArvore(No *ptRaiz) { // Altura da árvore
-    if((ptRaiz == NULL) || (ptRaiz->esq == NULL && ptRaiz->dir == NULL))
-        return 0;
+    if (ptRaiz == NULL)
+        return 0; // Para arvores sem raiz, retorna 0
+    else if (ptRaiz->esq == NULL && ptRaiz->dir == NULL)
+        return 1;
     else
         return 1 + maior(alturaArvore(ptRaiz->esq), alturaArvore(ptRaiz->dir));
 }
@@ -302,29 +305,62 @@ No* procuraElementoComRecursao(No *ptRaiz, int info2) { // Procura o elemento na
         return aux;
 }
 
+void remove_impares(No **raiz){
+    if((*raiz) != NULL){
+        remove_impares(&(*raiz)->esq);
+        remove_impares(&(*raiz)->dir);
+
+        if((*raiz)-> info %2 != 0){
+            remover(raiz, (*raiz)->info);
+        }
+    }
+}
+
+void remove_pares(No **raiz){
+    if((*raiz) != NULL){
+        remove_pares(&(*raiz)->esq);
+        remove_pares(&(*raiz)->dir);
+
+        if((*raiz)-> info %2 == 0){
+            remover(raiz, (*raiz)->info);
+        }
+    }
+}
+
+void libera_todos(No **A){ //Limpa todos
+    if((*A) != NULL){
+        libera_todos(&(*A)->esq);
+        libera_todos(&(*A)->dir);
+        free((*A));
+        (*A) = NULL;
+    }
+}
+
 int main() {
     int info2, opcao;
     No *ptRaiz;
     inicializarArvore(&ptRaiz);
 
     while(1) {
-        printf("\nArvore Binaria de Pesquisada");
-        printf("\n 1 insere sem recursao");
-        printf("\n 2 insere com recursao");
-        printf("\n 3 remover");
-        printf("\n 4 exibirPreOrdem");
-        printf("\n 5 exibirEmOrdem");
-        printf("\n 6 exibirPosOrdem");
-        printf("\n 7 contarFolhas");
-        printf("\n 8 contarNos");
-        printf("\n 9 alturaArvore");
-        printf("\n10 procuraElementoSemRecursao");
-        printf("\n11 procuraElementoComRecursao");
+        printf("\n\nArvore Binaria de Pesquisada");
+        printf("\n 1 Inserir sem recursao");
+        printf("\n 2 Inserir com recursao");
+        printf("\n 3 Remover um elemento");
+        printf("\n 4 Exibir PreOrdem");
+        printf("\n 5 Exibir EmOrdem");
+        printf("\n 6 Exibir PosOrdem");
+        printf("\n 7 Contar Folhas");
+        printf("\n 8 Contar Nos");
+        printf("\n 9 Altura Arvore");
+        printf("\n10 Procura Elemento Sem Recursao");
+        printf("\n11 Procura Elemento Com Recursao");
         printf("\n12 Mostrar a arvore lateralmente");
-        printf("\n13 maior valor");
-        printf("\n14 menor valor");
+        printf("\n13 Maior valor");
+        printf("\n14 Menor valor");
+        printf("\n15 Remover todos impares");
+        printf("\n16 Remover todos pares");
         printf("\n 0 Para sair do programa");
-        printf("\nDigite a opcao desejada: ");
+        printf("\n\nDigite a opcao desejada: ");
         scanf("%d", &opcao);
         printf("\n");
 
@@ -332,17 +368,17 @@ int main() {
             case 1:
                 printf("Numero a ser inserido: ");
                 scanf("%d", &info2);
-                insereComRecursao(&ptRaiz, info2);
+                insereSemRecursao(&ptRaiz, info2);
                 break;
 
             case 2:
                 printf("Numero a ser inserido: ");
                 scanf("%d", &info2);
-                insereSemRecursao(&ptRaiz, info2);
+                insereComRecursao(&ptRaiz, info2);
                 break;
 
             case 3:
-                printf("Numero a ser remvido: ");
+                printf("Numero a ser removido: ");
                 scanf("%d", &info2);
                 remover(&ptRaiz, info2);
                 break;
@@ -405,8 +441,18 @@ int main() {
                 menorValor(ptRaiz);
                 break;
 
+            case 15:
+                remove_impares(&ptRaiz);
+                break;
+
+            case 16:
+                remove_pares(&ptRaiz);
+                break;
+
             case 0:
-                exit(0);
+                libera_todos(&ptRaiz);
+                printf("\nFechando...\n\n");
+                return 0; // exit(0);
                 break;
 
             default:
