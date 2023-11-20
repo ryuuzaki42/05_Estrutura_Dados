@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#include "0_os.h" // To use clean_output() and clean_stdin()
+#include "00_os.h" // To use clean_output() and clean_stdin()
 
 #define MAXTAM 5
 

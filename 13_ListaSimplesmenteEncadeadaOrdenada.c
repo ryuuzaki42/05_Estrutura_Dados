@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 
-#include "0_os.h" // To use clean_output() and clean_stdin()
+#include "00_os.h" // To use clean_output() and clean_stdin()
 
 typedef struct sAluno {
     char nome[100];
