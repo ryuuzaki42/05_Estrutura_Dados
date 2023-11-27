@@ -111,7 +111,7 @@ No *MenorEsquerda(No **no) {
 
 void remover(No **ptRaiz, int info2) {
     if(*ptRaiz == NULL) { // Caso o info nao exista na arvore.
-        printf("Numero nao existe na arvore!");
+        printf("\nNumero nao existe na arvore!");
         return;
     }
 
@@ -310,7 +310,7 @@ void remove_impares(No **raiz){
         remove_impares(&(*raiz)->esq);
         remove_impares(&(*raiz)->dir);
 
-        if((*raiz)-> info %2 != 0){
+        if((*raiz)->info %2 != 0){
             remover(raiz, (*raiz)->info);
         }
     }
@@ -321,7 +321,7 @@ void remove_pares(No **raiz){
         remove_pares(&(*raiz)->esq);
         remove_pares(&(*raiz)->dir);
 
-        if((*raiz)-> info %2 == 0){
+        if((*raiz)->info %2 == 0){
             remover(raiz, (*raiz)->info);
         }
     }
