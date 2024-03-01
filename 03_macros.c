@@ -9,7 +9,7 @@ typedef enum {FEV=2, MAR=3, APR} month;
 int main() {
     printf("\n%s:%d (%s)\n", __FILE__, __LINE__, __func__);
     printf("%s - %s\n", __DATE__, __TIME__);
-    printf("%d  - %ld", __STDC__ ,__STDC_VERSION__);
+    printf("%d  - %ld", __STDC__,__STDC_VERSION__);
 
     check_code;
 
