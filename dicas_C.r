@@ -7,7 +7,7 @@
 # Mande me um e-mail. Ficarei Grato!
 # e-mail: joao42lbatista@gmail.com
 #
-# Last update: 22/03/2024
+# Last update: 02/04/2024
 #
 
 ## Leitura
@@ -26,12 +26,12 @@
         %d decimal, %o octal, %x hexadecimal, %x hexadecimal com letra maiúscula
 
 ## String ou vetor de char tem \0 no final
-    Aloocar sempre com N + 1
+    Alocar sempre com N + 1
 
 ## Não use gets()
     ## Use fgets
-        char mov2[1001];
-        fgets(mov2, 1001, stdin);
+        char s[1001];
+        fgets(s, 1001, stdin);
 
 ## Limpar o buffer do teclado
     ## Não use fflush(stdin)
@@ -40,11 +40,20 @@
 
 ## No scanf lendo char, o & é opcional
 ## No scanf lendo vetor de char, o & não é usado
-    char mov2[1001];
-    scanf("%s", mov2);
+    char s[1001];
+    scanf("%s", s);
 
-## Descarta \n - enter depois do um  int
+## Descarta \n - enter depois do um int
     scanf("%d%*c", &n);
+
+## Um espaço " %c" - elimina “ ”, tab e \n
+    scanf(" %c", &a);
+
+    ## Ou combinar dos dois lados
+        scanf(" %c ", &mov);
+
+## Em certas parte pode utilizar getchar para limpar partes do lixo do buffer do teclado
+    mov = getchar();
 
 ## Bons Links
     https://wiki.sj.ifsc.edu.br/index.php/SOP-stdio
